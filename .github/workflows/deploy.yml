@@ -1,0 +1,15 @@
+name: Build, Push and Deploy 
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'The environment to deploy for'
+        default: 'dev'
+        required: true
+        type: string
+jobs:
+  workflow:
+    uses: InnovacionTecnologicaCSP/devsecops-actions/.github/workflows/main.yml@feature/sonarCloud
+    with:
+      env: ${{ inputs.env }}
+    secrets: inherit
